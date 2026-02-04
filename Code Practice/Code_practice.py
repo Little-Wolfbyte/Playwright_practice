@@ -1,8 +1,9 @@
 
 class Calculator:
     num = 50
-    def __init__(self):
-        print("testing the constructor")
+    def __init__(self,a,b):
+        self.firstnumber = a
+        self.secondnumber = b
 
     #The below is called a method. You can not call a method inside a class. You must call the method
     #outside of the class
