@@ -14,10 +14,13 @@ import time
 
 def test_corelocaters(page: Page):
     page.goto("https://rahulshettyacademy.com/")
+    # Dismiss banner ONLY IF it appears
+    try:
+        close_button = page.get_by_label("Dismiss banner")
+        close_button.wait_for(state="visible", timeout=5000)
+        close_button.click()
+    except:
+        pass
 
-    # Wait for the dismiss banner button and click it
-    close_button = page.get_by_label("Dismiss banner")
-    close_button.wait_for(state="visible", timeout=15000)
-    close_button.click()
-    page.get_by_text("Browse Learning Paths").click()
+    page.get_by_role("navigation").get_by_role("link", name="Learning Paths").click()
     time.sleep(5)
